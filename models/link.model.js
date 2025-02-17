@@ -3,7 +3,7 @@ const database = require("../config/database.config");
 const Link = {
   getAllLinks: function (userId, result) {
     database.query(
-      "SELECT * FROM links_view WHERE user_id = ?;",
+      "SELECT * FROM links_view WHERE user_id = ? ORDER BY link_datetime ASC;",
       [userId],
       function (err, res) {
         if (err) {

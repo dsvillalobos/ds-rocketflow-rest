@@ -3,7 +3,7 @@ const database = require("../config/database.config");
 const Note = {
   getAllNotes: function (userId, result) {
     database.query(
-      "SELECT * FROM notes_view WHERE user_id = ?;",
+      "SELECT * FROM notes_view WHERE user_id = ? ORDER BY note_datetime ASC;",
       [userId],
       function (err, res) {
         if (err) {

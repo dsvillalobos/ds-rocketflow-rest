@@ -3,7 +3,7 @@ const database = require("../config/database.config");
 const File = {
   getAllFiles: function (userId, result) {
     database.query(
-      "SELECT * FROM files_view WHERE user_id = ?;",
+      "SELECT * FROM files_view WHERE user_id = ? ORDER BY file_datetime ASC;",
       [userId],
       function (err, res) {
         if (err) {
