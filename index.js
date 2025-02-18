@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
+const statusRoutes = require("./routes/status.routes");
 const authRoutes = require("./routes/auth.routes");
 const fileRoutes = require("./routes/file.routes");
 const linkRoutes = require("./routes/link.routes");
@@ -13,6 +14,11 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
+app.get("/", function (req, res) {
+  res.send("DS RocketFlow - RESTful Web Service");
+});
+
+app.use("/api/status", statusRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/files", fileRoutes);
 app.use("/api/links", linkRoutes);
